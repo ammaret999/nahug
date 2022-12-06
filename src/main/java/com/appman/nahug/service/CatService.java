@@ -1,23 +1,23 @@
 package com.appman.nahug.service;
 
-import com.appman.nahug.model.ModelCat;
+import com.appman.nahug.model.CatModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class CatService {
 
-    private final List<ModelCat> modelCats = new ArrayList<>();
+    private final List<CatModel> modelCats = new ArrayList<>();
     private final AtomicInteger counter = new AtomicInteger();
 
     //get
-    public List<ModelCat> list(){
+    public List<CatModel> list(){
         return modelCats;
     }
 
-    public ModelCat pathVariable(int id){
+    public CatModel pathVariable(int id){
         return modelCats.stream().filter(result -> result.getId() == id).findFirst().orElseGet(() -> null);
     }
 
@@ -26,11 +26,11 @@ public class Service {
     }
 
     //post
-    public void addCat(ModelCat modelCat){
-        modelCats.add(new ModelCat(counter.getAndIncrement(),modelCat.getName(),modelCat.getAge(),modelCat.getWeight(),modelCat.getGender()));
+    public void addCat(CatModel modelCat){
+        modelCats.add(new CatModel(counter.getAndIncrement(),modelCat.getName(),modelCat.getAge(),modelCat.getWeight(),modelCat.getGender()));
     }
 
-    public void editCat(ModelCat modelCat, int id){
+    public void editCat(CatModel modelCat, int id){
         modelCats.stream().filter(result -> result.getId() == id)
                 .findFirst()
                 .ifPresentOrElse(result -> {

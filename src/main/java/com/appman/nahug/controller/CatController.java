@@ -1,29 +1,27 @@
 package com.appman.nahug.controller;
 
-import com.appman.nahug.model.ModelCat;
-import com.appman.nahug.service.Service;
+import com.appman.nahug.model.CatModel;
+import com.appman.nahug.service.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
-public class ControllerCat {
+public class CatController {
     @Autowired
-    Service service;
+    CatService service;
 
     //get
     @GetMapping("/cat")
-    public List<ModelCat> arr(){
+    public List<CatModel> arr(){
         return service.list();
     }
 
     //get by id
     @GetMapping( "/cat/{id}")
     @ResponseBody
-    public ModelCat pathVariable(@PathVariable int id){
+    public CatModel pathVariable(@PathVariable int id){
         return service.pathVariable(id);
     }
 
@@ -37,13 +35,13 @@ public class ControllerCat {
 
     //post
     @PostMapping("/cat")
-    public void addCat(@RequestBody ModelCat modelCat){
+    public void addCat(@RequestBody CatModel modelCat){
         service.addCat(modelCat);
     }
 
     //put
     @PutMapping( "/cat/{id}")
-    public void editCat(@RequestBody ModelCat modelCat,@PathVariable int id){
+    public void editCat(@RequestBody CatModel modelCat, @PathVariable int id){
         service.editCat(modelCat,id);
     }
 

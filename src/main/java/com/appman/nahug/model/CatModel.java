@@ -1,15 +1,15 @@
 package com.appman.nahug.model;
 
-public class ModelCat {
+public class CatModel {
     private int id;
     private String name;
     private long age;
     private long weight;
     private String gender;
 
-    public ModelCat(){}
+    public CatModel(){}
 
-    public ModelCat(int id,String name, long age, long weight, String gender) {
+    public CatModel(int id, String name, long age, long weight, String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
