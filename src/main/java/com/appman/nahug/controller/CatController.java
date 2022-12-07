@@ -23,12 +23,12 @@ public class CatController {
     }
 
     @RequestMapping(value="/cat/{id}", method=RequestMethod.PUT)
-    public CatModel editCat(@PathVariable(value = "id") Integer id, @RequestBody CatModel catModel) {
+    public CatModel editCat(@PathVariable(value = "id") Long id, @RequestBody CatModel catModel) {
         return catservice.updateCat(id, catModel);
     }
 
     @RequestMapping(value="/cat/{id}", method=RequestMethod.DELETE)
-    public void deleteCat(@PathVariable(value = "id") Integer id) {
+    public void deleteCat(@PathVariable(value = "id") Long id) {
         catservice.deleteCat(id);
     }
 

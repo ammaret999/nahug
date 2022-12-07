@@ -15,8 +15,7 @@ public class CatService {
     @Autowired
         CatRepository catRepository;
 
-    private final List<CatModel> modelCats = new ArrayList<>();
-    private final AtomicInteger counter = new AtomicInteger();
+//    private final AtomicInteger counter = new AtomicInteger();
 
     // CREATE
     public CatModel createCat(CatModel catModel) {
@@ -29,12 +28,12 @@ public class CatService {
     }
 
     // DELETE
-    public void deleteCat(Integer empId) {
+    public void deleteCat(Long empId) {
         catRepository.deleteById(empId);
     }
 
     // UPDATE
-    public CatModel updateCat(Integer id, CatModel catModel) {
+    public CatModel updateCat(Long id, CatModel catModel) {
         CatModel catUpdate = catRepository.findById(id).get();
         catUpdate.setName(catModel.getName());
         catUpdate.setAge(catModel.getAge());

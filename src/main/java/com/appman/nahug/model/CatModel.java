@@ -8,17 +8,20 @@ public class CatModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private Integer id;
+    private Long id;
+
     @Column(name="name")
     private String name;
     @Column(name="age")
-    private Integer age;
-    @Column(name="wight")
-    private Integer weight;
+    private Long age;
+    @Column(name="weight")
+    private Long weight;
     @Column(name="gender")
     private String gender;
 
-    public CatModel(Integer id, String name, Integer age, Integer weight, String gender) {
+    public CatModel(){}
+
+    public CatModel(Long id, String name, Long age, Long weight, String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -26,11 +29,11 @@ public class CatModel {
         this.gender = gender;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,19 +45,19 @@ public class CatModel {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public Long getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Long age) {
         this.age = age;
     }
 
-    public Integer getWeight() {
+    public Long getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Long weight) {
         this.weight = weight;
     }
 
@@ -67,14 +70,14 @@ public class CatModel {
     }
 
 
-    @Override
-    public String toString() {
-        return "CatModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", weight=" + weight +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CatModel{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", age=" + age +
+//                ", weight=" + weight +
+//                ", gender='" + gender + '\'' +
+//                '}';
+//    }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @SpringBootApplication
-public class NahugApplication implements CommandLineRunner {
+public class NahugApplication{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -19,14 +19,4 @@ public class NahugApplication implements CommandLineRunner {
 		SpringApplication.run(NahugApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		String sql = "INSERT INTO stud (id, name) VALUES ("
-				+ "1, 'ABC')";
-		int rows = jdbcTemplate.update(sql);
-		if (rows > 0) {
-			System.out.println("One row inserted.");
-
-		}
-	}
 }
