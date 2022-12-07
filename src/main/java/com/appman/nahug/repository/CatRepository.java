@@ -1,8 +1,10 @@
-//package com.appman.nahug.repository;
-//
-//import com.appman.nahug.model.ModelCat;
-//
-//@org.springframework.stereotype.Repository
-//public interface Repository extends ModelCat {
-//
-//}
+package com.appman.nahug.repository;
+
+import com.appman.nahug.model.CatModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CatRepository extends JpaRepository<CatModel,Integer> {
+
+}
