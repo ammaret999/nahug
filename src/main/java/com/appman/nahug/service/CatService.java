@@ -1,84 +1,63 @@
 package com.appman.nahug.service;
 
+import com.appman.nahug.dto.CatDTO;
 import com.appman.nahug.model.CatModel;
+import com.appman.nahug.model.UserModel;
 import com.appman.nahug.repository.CatRepository;
+import com.appman.nahug.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class CatService {
 
     @Autowired
-        CatRepository catRepository;
-
-//    private final AtomicInteger counter = new AtomicInteger();
+    CatRepository catRepository;
+    @Autowired
+    UserRepository userRepository;
 
     // CREATE
-    public CatModel createCat(CatModel catModel) {
+    public CatModel createCat(CatDTO catDTO) {
+        CatModel catModel = new CatModel();
+
+        catModel.setUserModel(userRepository.findById(catDTO.getId_u()).orElseGet(null));
+        catModel.setName(catDTO.getName());
+        catModel.setAge_year(catDTO.getAge_year());
+        catModel.setAge_month(catDTO.getAge_month());
+        catModel.setWeight(catDTO.getWeight());
+        catModel.setGender(catDTO.getGender());
+
         return catRepository.save(catModel);
     }
 
-    // READ
+    //READ
     public List<CatModel> getCat() {
         return catRepository.findAll();
     }
 
-    // DELETE
-    public void deleteCat(Long empId) {
-        catRepository.deleteById(empId);
-    }
+//    public List<CatModel> getCatByEmali(String email){
+//        return catRepository.findByEmail(email);
+//    }
 
-    // UPDATE
-    public CatModel updateCat(Long id, CatModel catModel) {
-        CatModel catUpdate = catRepository.findById(id).get();
-        catUpdate.setName(catModel.getName());
-        catUpdate.setAge(catModel.getAge());
-        catUpdate.setWeight(catModel.getWeight());
-        catUpdate.setGender(catModel.getGender());
 
-        return catRepository.save(catUpdate);
-    }
+//
+//    // DELETE
+//    public void deleteCat(Long catId) {
+//        catRepository.deleteById(catId);
+//    }
+//
+//    // UPDATE
+//    public CatModel updateCat(Long id, CatModel catModel) {
+//        CatModel catUpdate = catRepository.findById(id).get();
+//        catUpdate.setName(catModel.getName());
+//        catUpdate.setAge_year(catModel.getAge_year());
+//        catUpdate.setAge_month(catModel.getAge_month());
+//        catUpdate.setWeight(catModel.getWeight());
+//        catUpdate.setGender(catModel.getGender());
+//
+//        return catRepository.save(catUpdate);
+//    }
 
-//    //get
-//    public List<CatModel> list(){
-//        return modelCats;
-//    }
-//
-//    public CatModel pathVariable(int id){
-//        return modelCats.stream().filter(result -> result.getId() == id).findFirst().orElseGet(() -> null);
-//    }
-//
-//    public String Request(String name){
-//        return "CatID: "+ name;
-//    }
-//
-//    //post
-//    public void addCat(CatModel modelCat){
-//        modelCats.add(new CatModel(counter.getAndIncrement(),modelCat.getName(),modelCat.getAge(),modelCat.getWeight(),modelCat.getGender()));
-//    }
-//
-//    public void editCat(CatModel modelCat, int id){
-//        modelCats.stream().filter(result -> result.getId() == id)
-//                .findFirst()
-//                .ifPresentOrElse(result -> {
-//                    result.setName(modelCat.getName());
-//                }, () -> {
-//
-//                });
-//    }
-//
-//    public void deleteCat(int id){
-//        modelCats.stream().filter(result -> result.getId() == id)
-//                .findFirst()
-//                .ifPresentOrElse(result -> {
-//                    modelCats.remove(result);
-//                }, () -> {
-//
-//                });
-//    }
 }
-
