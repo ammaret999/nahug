@@ -1,7 +1,6 @@
 package com.appman.nahug.service;
 
 import com.appman.nahug.dto.CatDTO;
-import com.appman.nahug.dto.FoodEditDTO;
 import com.appman.nahug.model.CatModel;
 import com.appman.nahug.model.UserModel;
 import com.appman.nahug.repository.BrandRepository;
@@ -40,9 +39,16 @@ public class CatService {
     }
 
     // put
-    public CatModel editCat(FoodEditDTO foodEditDTO) {
-        CatModel Update = catRepository.findById(foodEditDTO.getId_c()).get();
-        Update.setBrandModelId(brandRepository.findById(foodEditDTO.getId_f()).orElseGet(null));
+    public CatModel editCat(CatModel catModel,Long id_cat) {
+        CatModel Update = catRepository.findById(id_cat).get();
+
+        Update.setName(catModel.getName());
+        Update.setAge_year(catModel.getAge_year());
+        Update.setAge_month(catModel.getAge_month());
+        Update.setWeight(catModel.getWeight());
+        Update.setGender(catModel.getGender());
+        Update.setUserModelId(userRepository.findById(catModel.getUserModelId().getId_user()).orElseGet(null));
+        Update.setBrandModelId(brandRepository.findById(catModel.getBrandModelId().getId_brand()).orElseGet(null));
         Update.setCal_day(
                 calculate_cal(Update.getWeight(),Update.getBrandModelId().getCal())
         );
