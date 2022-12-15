@@ -24,10 +24,10 @@ public class CatController {
         return catService.getCat();
     }
 
-//    @RequestMapping(value = "/user/cat/edit", method = RequestMethod.PUT)
-//    public CatModel editCat(@RequestBody FoodEditDTO foodEditDTO) {
-//        return catService.editCat(foodEditDTO);
-//    }
+    @RequestMapping(value = "/user/cat/edit", method = RequestMethod.PUT)
+    public CatModel editCat(@RequestBody FoodEditDTO foodEditDTO) {
+        return catService.editCat(foodEditDTO);
+    }
 }
 
 

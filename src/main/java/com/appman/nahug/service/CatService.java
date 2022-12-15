@@ -3,12 +3,14 @@ package com.appman.nahug.service;
 import com.appman.nahug.dto.CatDTO;
 import com.appman.nahug.dto.FoodEditDTO;
 import com.appman.nahug.model.CatModel;
+import com.appman.nahug.model.UserModel;
 import com.appman.nahug.repository.BrandRepository;
 import com.appman.nahug.repository.CatRepository;
 import com.appman.nahug.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -38,14 +40,14 @@ public class CatService {
     }
 
     // put
-//    public CatModel editCat(FoodEditDTO foodEditDTO) {
-//        CatModel catModel = new CatModel();
-//        catModel.setBrandModelId(brandRepository.findById(foodEditDTO.getId_f()).orElseGet(null));
-//        catModel.setCal_day(
-//                calculate_cal(catModel.getWeight(),catModel.getBrandModelId().getCal())
-//        );
-//        return catRepository.save(catModel);
-//    }
+    public CatModel editCat(FoodEditDTO foodEditDTO) {
+        CatModel Update = catRepository.findById(foodEditDTO.getId_c()).get();
+        Update.setBrandModelId(brandRepository.findById(foodEditDTO.getId_f()).orElseGet(null));
+        Update.setCal_day(
+                calculate_cal(Update.getWeight(),Update.getBrandModelId().getCal())
+        );
+        return catRepository.save(Update);
+    }
 
     public Long calculate_cal(Long weight,Long calFood){
         return (((30 * weight)+70) * 100 / calFood);
