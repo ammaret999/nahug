@@ -22,6 +22,11 @@ public class CatController {
     public List<CatModel> readCat() {
         return catService.getCat();
     }
+
+    @RequestMapping(value = "/user/cat/edit/{id_cat}", method = RequestMethod.PUT)
+    public CatModel editCat(@RequestBody CatModel catModel,@PathVariable(value = "id_cat") Long id_cat) {
+        return catService.editCat(catModel,id_cat);
+    }
 }
 
 

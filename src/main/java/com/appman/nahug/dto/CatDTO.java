@@ -18,13 +18,16 @@ public class CatDTO {
 
     private Long id_u;
 
-    public CatDTO(String name, Long age_year, Long age_month, Long weight, String gender, Long id_u) {
+    private Long id_f;
+
+    public CatDTO(String name, Long age_year, Long age_month, Long weight, String gender, Long id_u, Long id_f) {
         this.name = name;
         this.age_year = age_year;
         this.age_month = age_month;
         this.weight = weight;
         this.gender = gender;
         this.id_u = id_u;
+        this.id_f = id_f;
     }
 
     public String getName() {
@@ -73,5 +76,13 @@ public class CatDTO {
 
     public void setId_u(Long id_u) {
         this.id_u = id_u;
+    }
+
+    public Long getId_f() {
+        return id_f;
+    }
+
+    public void setId_f(Long id_f) {
+        this.id_f = id_f;
     }
 }

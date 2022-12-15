@@ -8,29 +8,29 @@ public class BrandModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_brand")
-    private Long id;
+    private Long id_brand;
     @Column(name = "brand")
     private String brand;
     @Column(name = "description")
     private String description;
-    @Column(name = "kgCal")
-    private Long kgCal;
+    @Column(name = "cal")
+    private Long cal;
 
     public BrandModel(){}
 
-    public BrandModel(Long id, String brand, String description, Long kgCal) {
-        this.id = id;
+    public BrandModel(Long id_brand, String brand, String description, Long cal) {
+        this.id_brand = id_brand;
         this.brand = brand;
         this.description = description;
-        this.kgCal = kgCal;
+        this.cal = cal;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId_brand() {
+        return id_brand;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_brand(Long id_brand) {
+        this.id_brand = id_brand;
     }
 
     public String getBrand() {
@@ -49,11 +49,12 @@ public class BrandModel {
         this.description = description;
     }
 
-    public Long getKgCal() {
-        return kgCal;
+    public Long getCal() {
+        return cal;
     }
 
-    public void setKgCal(Long kgCal) {
-        this.kgCal = kgCal;
+    public void setCal(Long cal) {
+        this.cal = cal;
     }
+
 }

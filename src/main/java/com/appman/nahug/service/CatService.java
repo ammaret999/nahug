@@ -3,11 +3,13 @@ package com.appman.nahug.service;
 import com.appman.nahug.dto.CatDTO;
 import com.appman.nahug.model.CatModel;
 import com.appman.nahug.model.UserModel;
+import com.appman.nahug.repository.BrandRepository;
 import com.appman.nahug.repository.CatRepository;
 import com.appman.nahug.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,19 +19,44 @@ public class CatService {
     CatRepository catRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    BrandRepository brandRepository;
 
     // CREATE
     public CatModel createCat(CatDTO catDTO) {
         CatModel catModel = new CatModel();
-
-        catModel.setUserModel(userRepository.findById(catDTO.getId_u()).orElseGet(null));
+        catModel.setUserModelId(userRepository.findById(catDTO.getId_u()).orElseGet(null));
         catModel.setName(catDTO.getName());
         catModel.setAge_year(catDTO.getAge_year());
         catModel.setAge_month(catDTO.getAge_month());
         catModel.setWeight(catDTO.getWeight());
         catModel.setGender(catDTO.getGender());
-
+        catModel.setBrandModelId(brandRepository.findById(catDTO.getId_f()).orElseGet(null));
+        catModel.setCal_day(
+                calculate_cal(catModel.getWeight(),catModel.getBrandModelId().getCal())
+        );
         return catRepository.save(catModel);
+    }
+
+    // put
+    public CatModel editCat(CatModel catModel,Long id_cat) {
+        CatModel Update = catRepository.findById(id_cat).get();
+
+        Update.setName(catModel.getName());
+        Update.setAge_year(catModel.getAge_year());
+        Update.setAge_month(catModel.getAge_month());
+        Update.setWeight(catModel.getWeight());
+        Update.setGender(catModel.getGender());
+        Update.setUserModelId(userRepository.findById(catModel.getUserModelId().getId_user()).orElseGet(null));
+        Update.setBrandModelId(brandRepository.findById(catModel.getBrandModelId().getId_brand()).orElseGet(null));
+        Update.setCal_day(
+                calculate_cal(Update.getWeight(),Update.getBrandModelId().getCal())
+        );
+        return catRepository.save(Update);
+    }
+
+    public Long calculate_cal(Long weight,Long calFood){
+        return (((30 * weight)+70) * 100 / calFood);
     }
 
     //READ
@@ -37,27 +64,5 @@ public class CatService {
         return catRepository.findAll();
     }
 
-//    public List<CatModel> getCatByEmali(String email){
-//        return catRepository.findByEmail(email);
-//    }
-
-
-//
-//    // DELETE
-//    public void deleteCat(Long catId) {
-//        catRepository.deleteById(catId);
-//    }
-//
-//    // UPDATE
-//    public CatModel updateCat(Long id, CatModel catModel) {
-//        CatModel catUpdate = catRepository.findById(id).get();
-//        catUpdate.setName(catModel.getName());
-//        catUpdate.setAge_year(catModel.getAge_year());
-//        catUpdate.setAge_month(catModel.getAge_month());
-//        catUpdate.setWeight(catModel.getWeight());
-//        catUpdate.setGender(catModel.getGender());
-//
-//        return catRepository.save(catUpdate);
-//    }
 
 }

@@ -20,30 +20,28 @@ public class CatModel {
     @Column(name="gender")
     private String gender;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "cat_id_user_fkey",referencedColumnName = "id_user")
     @ManyToOne
     @JoinColumn(name = "id_u")
-    private UserModel userModelId;
+    private UserModel userModel;
+
+    @ManyToOne
+    @JoinColumn(name = "id_food")
+    private BrandModel brandModelId;
+    @Column(name = "cal_day")
+    private Long cal_day;
 
     public CatModel(){}
 
-    public CatModel(Long id_cat, String name, Long age_year, Long age_month, Long weight, String gender, UserModel userModel) {
+    public CatModel(Long id_cat, String name, Long age_year, Long age_month, Long weight, String gender, UserModel userModelId, BrandModel brandModelId, Long cat_day) {
         this.id_cat = id_cat;
         this.name = name;
         this.age_year = age_year;
         this.age_month = age_month;
         this.weight = weight;
         this.gender = gender;
-        this.userModelId = userModel;
-    }
-
-    public UserModel getUserModel() {
-        return userModelId;
-    }
-
-    public void setUserModel(UserModel userModel) {
-        this.userModelId = userModel;
+        this.userModel = userModelId;
+        this.brandModelId = brandModelId;
+        this.cal_day = cat_day;
     }
 
     public Long getId_cat() {
@@ -94,4 +92,27 @@ public class CatModel {
         this.gender = gender;
     }
 
+    public UserModel getUserModelId() {
+        return userModel;
+    }
+
+    public void setUserModelId(UserModel userModelId) {
+        this.userModel = userModelId;
+    }
+
+    public BrandModel getBrandModelId() {
+        return brandModelId;
+    }
+
+    public void setBrandModelId(BrandModel brandModelId) {
+        this.brandModelId = brandModelId;
+    }
+
+    public Long getCal_day() {
+        return cal_day;
+    }
+
+    public void setCal_day(Long cat_day) {
+        this.cal_day = cat_day;
+    }
 }
