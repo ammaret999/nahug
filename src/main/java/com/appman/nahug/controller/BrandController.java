@@ -15,11 +15,11 @@ public class BrandController {
     @Autowired
     BrandService brandService;
 
-    @RequestMapping(value = "/user/cat/brand",method = RequestMethod.POST)
+    @RequestMapping(value = "/brand",method = RequestMethod.POST)
     public BrandModel creatBrand(@RequestBody BrandModel brandModel){
         return brandService.addBrand(brandModel);
     }
 
-    @RequestMapping(value = "/user/cat/brand",method = RequestMethod.GET)
+    @RequestMapping(value = "/brand",method = RequestMethod.GET)
     public List<BrandModel> getBrand(){return brandService.getBrand();}
 }

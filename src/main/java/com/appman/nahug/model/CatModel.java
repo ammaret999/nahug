@@ -22,7 +22,7 @@ public class CatModel {
 
     @ManyToOne
     @JoinColumn(name = "id_u")
-    private UserModel userModelId;
+    private UserModel userModel;
 
     @ManyToOne
     @JoinColumn(name = "id_food")
@@ -39,7 +39,7 @@ public class CatModel {
         this.age_month = age_month;
         this.weight = weight;
         this.gender = gender;
-        this.userModelId = userModelId;
+        this.userModel = userModelId;
         this.brandModelId = brandModelId;
         this.cal_day = cat_day;
     }
@@ -93,11 +93,11 @@ public class CatModel {
     }
 
     public UserModel getUserModelId() {
-        return userModelId;
+        return userModel;
     }
 
     public void setUserModelId(UserModel userModelId) {
-        this.userModelId = userModelId;
+        this.userModel = userModelId;
     }
 
     public BrandModel getBrandModelId() {
