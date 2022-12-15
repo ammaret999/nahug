@@ -1,6 +1,7 @@
 package com.appman.nahug.controller;
 
 import com.appman.nahug.dto.CatDTO;
+import com.appman.nahug.dto.FoodEditDTO;
 import com.appman.nahug.model.CatModel;
 import com.appman.nahug.service.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class CatController {
     public List<CatModel> readCat() {
         return catService.getCat();
     }
+
+//    @RequestMapping(value = "/user/cat/edit", method = RequestMethod.PUT)
+//    public CatModel editCat(@RequestBody FoodEditDTO foodEditDTO) {
+//        return catService.editCat(foodEditDTO);
+//    }
 }
 
 
