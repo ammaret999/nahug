@@ -14,8 +14,8 @@ public class VaccineModel {
     @Column(name = "name_vaccine")
     private String vaccine;
 
-    @OneToMany
-    @JoinColumn(name = "phase")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vaccine_id",referencedColumnName = "id_vaccine")
     private List<PhaseModel> phaseModels;
 
     public VaccineModel() {
