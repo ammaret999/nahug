@@ -56,7 +56,15 @@ public class CatService {
     }
 
     public Long calculate_cal(Long weight,Long calFood){
-        return (((30 * weight)+70) * 100 / calFood);
+        if(weight <= 0 || calFood <= 0) {
+            return 0L;
+        }
+        else if(weight <= 2){
+            return  (((30 * weight) + 70) * 100 / calFood);
+        }
+        else {
+            return (long) (70 * Math.pow(weight,0.75) * 100 / calFood);
+        }
     }
 
     //READ
