@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.appman</groupId>
 	<artifactId>nahug</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.2</version>
 	<name>nahug</name>
 	<description>nahug project test</description>
 	<properties>
