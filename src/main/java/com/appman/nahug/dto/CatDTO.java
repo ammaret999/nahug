@@ -1,33 +1,29 @@
 package com.appman.nahug.dto;
 
-import com.appman.nahug.model.UserModel;
-import lombok.Data;
-
-@Data
 public class CatDTO {
 
     private String name;
 
-    private Long age_year;
+    private Long ageYear;
 
-    private Long age_month;
+    private Long ageMonth;
 
     private Long weight;
 
     private String gender;
 
-    private Long id_u;
+    private Long userId;
 
-    private Long id_f;
+    private Long foodId;
 
-    public CatDTO(String name, Long age_year, Long age_month, Long weight, String gender, Long id_u, Long id_f) {
+    public CatDTO(String name, Long ageYear, Long ageMonth, Long weight, String gender, Long userId, Long foodId) {
         this.name = name;
-        this.age_year = age_year;
-        this.age_month = age_month;
+        this.ageYear = ageYear;
+        this.ageMonth = ageMonth;
         this.weight = weight;
         this.gender = gender;
-        this.id_u = id_u;
-        this.id_f = id_f;
+        this.userId = userId;
+        this.foodId = foodId;
     }
 
     public String getName() {
@@ -38,20 +34,20 @@ public class CatDTO {
         this.name = name;
     }
 
-    public Long getAge_year() {
-        return age_year;
+    public Long getAgeYear() {
+        return ageYear;
     }
 
-    public void setAge_year(Long age_year) {
-        this.age_year = age_year;
+    public void setAgeYear(Long ageYear) {
+        this.ageYear = ageYear;
     }
 
-    public Long getAge_month() {
-        return age_month;
+    public Long getAgeMonth() {
+        return ageMonth;
     }
 
-    public void setAge_month(Long age_month) {
-        this.age_month = age_month;
+    public void setAgeMonth(Long ageMonth) {
+        this.ageMonth = ageMonth;
     }
 
     public Long getWeight() {
@@ -70,19 +66,19 @@ public class CatDTO {
         this.gender = gender;
     }
 
-    public Long getId_u() {
-        return id_u;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId_u(Long id_u) {
-        this.id_u = id_u;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getId_f() {
-        return id_f;
+    public Long getFoodId() {
+        return foodId;
     }
 
-    public void setId_f(Long id_f) {
-        this.id_f = id_f;
+    public void setFoodId(Long foodId) {
+        this.foodId = foodId;
     }
 }

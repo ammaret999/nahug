@@ -2,6 +2,8 @@ package com.appman.nahug.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "vaccine")
 public class VaccineModel {
@@ -11,19 +13,18 @@ public class VaccineModel {
     private Long id;
     @Column(name = "name_vaccine")
     private String vaccine;
-    @Column(name = "cat_month")
-    private String cat_month;
-    @Column(name = "month")
-    private Long month;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vaccine_id",referencedColumnName = "id_vaccine")
+    private List<PhaseModel> phaseModels;
 
     public VaccineModel() {
     }
 
-    public VaccineModel(Long id, String vaccine, String cat_month, Long month) {
+    public VaccineModel(Long id, String vaccine, List<PhaseModel> phaseModels) {
         this.id = id;
         this.vaccine = vaccine;
-        this.cat_month = cat_month;
-        this.month = month;
+        this.phaseModels = phaseModels;
     }
 
     public Long getId() {
@@ -42,19 +43,11 @@ public class VaccineModel {
         this.vaccine = vaccine;
     }
 
-    public String getCat_month() {
-        return cat_month;
+    public List<PhaseModel> getPhaseModels() {
+        return phaseModels;
     }
 
-    public void setCat_month(String cat_month) {
-        this.cat_month = cat_month;
-    }
-
-    public Long getMonth() {
-        return month;
-    }
-
-    public void setMonth(Long month) {
-        this.month = month;
+    public void setPhaseModels(List<PhaseModel> phaseModels) {
+        this.phaseModels = phaseModels;
     }
 }
