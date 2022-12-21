@@ -1,16 +1,12 @@
 package com.appman.nahug.dto;
 
-import com.appman.nahug.model.UserModel;
-import lombok.Data;
-
-@Data
 public class CatDTO {
 
     private String name;
 
-    private Long age_year;
+    private Long ageYear;
 
-    private Long age_month;
+    private Long ageMonth;
 
     private Long weight;
 
@@ -20,10 +16,10 @@ public class CatDTO {
 
     private Long foodId;
 
-    public CatDTO(String name, Long age_year, Long age_month, Long weight, String gender, Long userId, Long foodId) {
+    public CatDTO(String name, Long ageYear, Long ageMonth, Long weight, String gender, Long userId, Long foodId) {
         this.name = name;
-        this.age_year = age_year;
-        this.age_month = age_month;
+        this.ageYear = ageYear;
+        this.ageMonth = ageMonth;
         this.weight = weight;
         this.gender = gender;
         this.userId = userId;
@@ -38,20 +34,20 @@ public class CatDTO {
         this.name = name;
     }
 
-    public Long getAge_year() {
-        return age_year;
+    public Long getAgeYear() {
+        return ageYear;
     }
 
-    public void setAge_year(Long age_year) {
-        this.age_year = age_year;
+    public void setAgeYear(Long ageYear) {
+        this.ageYear = ageYear;
     }
 
-    public Long getAge_month() {
-        return age_month;
+    public Long getAgeMonth() {
+        return ageMonth;
     }
 
-    public void setAge_month(Long age_month) {
-        this.age_month = age_month;
+    public void setAgeMonth(Long ageMonth) {
+        this.ageMonth = ageMonth;
     }
 
     public Long getWeight() {

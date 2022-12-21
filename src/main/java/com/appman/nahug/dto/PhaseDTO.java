@@ -1,8 +1,5 @@
 package com.appman.nahug.dto;
 
-import lombok.Data;
-
-@Data
 public class PhaseDTO {
     private Long ageMonth;
     private Long next;

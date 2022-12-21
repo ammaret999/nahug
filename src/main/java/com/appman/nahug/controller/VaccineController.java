@@ -1,5 +1,6 @@
 package com.appman.nahug.controller;
 
+import com.appman.nahug.dto.VaccineDTO;
 import com.appman.nahug.model.UserModel;
 import com.appman.nahug.model.VaccineModel;
 import com.appman.nahug.service.VaccineService;
@@ -18,8 +19,8 @@ public class VaccineController {
 
     //vaccine
     @RequestMapping(value="/vaccine", method=RequestMethod.POST)
-    public VaccineModel createVaccine(@RequestBody VaccineModel vaccineModel) {
-        return vaccineService.addVaccine(vaccineModel);
+    public VaccineModel createVaccine(@RequestBody VaccineDTO vaccineDTO) {
+        return vaccineService.addVaccine(vaccineDTO);
     }
     @RequestMapping(value="/vaccine", method=RequestMethod.GET)
     public List<VaccineModel> readVaccine() {
