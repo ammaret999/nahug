@@ -27,8 +27,8 @@ public class CatService {
         CatModel catModel = new CatModel();
         catModel.setUserModelId(userRepository.findById(catDTO.getUserId()).orElseGet(null));
         catModel.setName(catDTO.getName());
-        catModel.setAge_year(catDTO.getAgeYear());
-        catModel.setAge_month(catDTO.getAgeMonth());
+        catModel.setAge_year(catDTO.getAge_year());
+        catModel.setAge_month(catDTO.getAge_month());
         catModel.setWeight(catDTO.getWeight());
         catModel.setGender(catDTO.getGender());
         catModel.setBrandModelId(brandRepository.findById(catDTO.getFoodId()).orElseGet(null));
