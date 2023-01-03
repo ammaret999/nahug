@@ -1,0 +1,17 @@
+version: '1'
+services:
+  app:
+    container_name: nahug_app_sql
+    image: nahug-sql
+    build: ./
+    ports:
+      - "8070:8080"
+  PostgresSQL:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "2345:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=9999

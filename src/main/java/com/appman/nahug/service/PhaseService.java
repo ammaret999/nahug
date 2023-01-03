@@ -33,4 +33,8 @@ public class PhaseService {
     public List<PhaseModel> getAllPhase() {
         return phaseRepository.findAll();
     }
+
+    public void deletePhase(Long id){
+        phaseRepository.deleteById(id);
+    }
 }

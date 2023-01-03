@@ -3,10 +3,7 @@ package com.appman.nahug.controller;
 import com.appman.nahug.model.BrandModel;
 import com.appman.nahug.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,4 +19,9 @@ public class BrandController {
 
     @RequestMapping(value = "/brand",method = RequestMethod.GET)
     public List<BrandModel> getBrand(){return brandService.getBrand();}
+
+    @RequestMapping(value="/brand/{id}", method=RequestMethod.DELETE)
+    public void deleteCat(@PathVariable(value = "id") Long id) {
+        brandService.deleteBrand(id);
+    }
 }

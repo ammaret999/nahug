@@ -27,6 +27,11 @@ public class CatController {
     public CatModel editCat(@RequestBody CatModel catModel,@PathVariable(value = "catId") Long catId) {
         return catService.editCat(catModel,catId);
     }
+
+    @RequestMapping(value="/user/cat/{id}", method=RequestMethod.DELETE)
+    public void deleteCat(@PathVariable(value = "id") Long id) {
+        catService.deleteCat(id);
+    }
 }
 
 

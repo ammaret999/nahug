@@ -23,4 +23,8 @@ public class VaccineService {
     public List<VaccineModel> getVaccine(){
         return vaccineRepository.findAll();
     }
+
+    public void deleteVaccine(Long id){
+        vaccineRepository.deleteById(id);
+    }
 }

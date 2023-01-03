@@ -19,11 +19,6 @@ public class UserModel {
     @Column(name = "password")
     private String password;
 
-//    @OneToMany(targetEntity = CatModel.class,cascade = CascadeType.ALL)
-//    @JoinColumn(name = "cu_fk",referencedColumnName = "id_user")
-//    @Column(name = "cat_list")
-//    private List<CatModel> catList;
-
     public UserModel(){}
 
     public UserModel(Long id_user, String first_name, String last_name, String email_user, String password) {
