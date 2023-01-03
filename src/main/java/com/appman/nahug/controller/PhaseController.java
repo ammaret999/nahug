@@ -21,4 +21,8 @@ public class PhaseController {
     public List<PhaseModel> readPhase() {
         return phaseService.getAllPhase();
     }
+    @RequestMapping(value="/vaccine/phase/{id}", method=RequestMethod.DELETE)
+    public void deleteCat(@PathVariable(value = "id") Long id) {
+        phaseService.deletePhase(id);
+    }
 }

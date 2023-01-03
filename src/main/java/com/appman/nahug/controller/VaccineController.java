@@ -5,10 +5,7 @@ import com.appman.nahug.model.UserModel;
 import com.appman.nahug.model.VaccineModel;
 import com.appman.nahug.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,8 @@ public class VaccineController {
         return vaccineService.getVaccine();
     }
 
+    @RequestMapping(value="/vaccine/{id}", method=RequestMethod.DELETE)
+    public void deleteCat(@PathVariable(value = "id") Long id) {
+        vaccineService.deleteVaccine(id);
+    }
 }

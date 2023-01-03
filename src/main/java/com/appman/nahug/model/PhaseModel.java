@@ -10,9 +10,9 @@ public class PhaseModel {
     private Long id;
     @Column(name = "age_month")
     private Long ageMonth;
-    @Column(name = "next")
+    @Column(name = "next_time")
     private Long next;
-    @Column(name = "time")
+    @Column(name = "count_vaccine")
     private Long time;
     @Column(name = "vaccine_id")
     private Long vaccineId;

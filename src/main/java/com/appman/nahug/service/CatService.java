@@ -72,5 +72,5 @@ public class CatService {
         return catRepository.findAll();
     }
 
-
+    public void deleteCat(Long id){catRepository.deleteById(id);}
 }
