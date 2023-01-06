@@ -2,6 +2,7 @@ package com.appman.nahug.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,8 @@ public class VaccineModel {
     private Long id;
     @Column(name = "name_vaccine")
     private String vaccine;
+    @Column(name = "age_month")
+    private Long ageMonth;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "vaccine_id",referencedColumnName = "id_vaccine")
@@ -21,9 +24,10 @@ public class VaccineModel {
     public VaccineModel() {
     }
 
-    public VaccineModel(Long id, String vaccine, List<PhaseModel> phaseModels) {
+    public VaccineModel(Long id, String vaccine, Long ageMonth, ArrayList<PhaseModel> phaseModels) {
         this.id = id;
         this.vaccine = vaccine;
+        this.ageMonth = ageMonth;
         this.phaseModels = phaseModels;
     }
 
@@ -49,5 +53,13 @@ public class VaccineModel {
 
     public void setPhaseModels(List<PhaseModel> phaseModels) {
         this.phaseModels = phaseModels;
+    }
+
+    public Long getAgeMonth() {
+        return ageMonth;
+    }
+
+    public void setAgeMonth(Long ageMonth) {
+        this.ageMonth = ageMonth;
     }
 }

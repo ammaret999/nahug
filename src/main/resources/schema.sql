@@ -15,11 +15,11 @@ CREATE TABLE IF NOT EXISTS cat(
     age_month integer DEFAULT 1,
     weight integer NOT NULL DEFAULT 1,
     gender character(20) COLLATE pg_catalog."default",
-    id_u integer NOT NULL,
+    id_user integer NOT NULL,
     id_food integer,
     cal_day integer DEFAULT 0,
     CONSTRAINT cat_pkey PRIMARY KEY (id_cat),
-    CONSTRAINT cat_id_user_fkey FOREIGN KEY (id_u)
+    CONSTRAINT cat_id_user_fkey FOREIGN KEY (id_user)
         REFERENCES public.test_user (id_user) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS brand(
 CREATE TABLE IF NOT EXISTS vaccine(
     id_vaccine integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     name_vaccine character(20) COLLATE pg_catalog."default" NOT NULL,
+    age_month integer NOT NULL,
     CONSTRAINT vaccine_pkey PRIMARY KEY (id_vaccine),
     CONSTRAINT u_name_vaccine UNIQUE (name_vaccine)
 
@@ -47,11 +48,10 @@ CREATE TABLE IF NOT EXISTS vaccine(
 
 CREATE TABLE IF NOT EXISTS phase(
     id_phase integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    age_month integer NOT NULL DEFAULT 2,
     next_time integer DEFAULT 0,
     count_vaccine integer NOT NULL,
-    vaccine_id integer,
-    phase integer,
+    vaccine_id integer NOT NULL,
+    phase integer NOT NULL,
     CONSTRAINT phase_pkey PRIMARY KEY (id_phase),
     CONSTRAINT pv_fk FOREIGN KEY (vaccine_id)
         REFERENCES public.vaccine (id_vaccine) MATCH SIMPLE
@@ -59,4 +59,25 @@ CREATE TABLE IF NOT EXISTS phase(
         ON DELETE NO ACTION
         NOT VALID
 
+);
+
+CREATE TABLE IF NOT EXISTS public.history
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+        id_vaccine integer NOT NULL,
+        id_cat integer NOT NULL,
+        start_date date NOT NULL,
+        end_date date NOT NULL,
+        count integer DEFAULT 0,
+        CONSTRAINT history_pkey PRIMARY KEY (id),
+        CONSTRAINT history_id_cat FOREIGN KEY (id_cat)
+            REFERENCES public.cat (id_cat) MATCH SIMPLE
+            ON UPDATE NO ACTION
+            ON DELETE NO ACTION
+            NOT VALID,
+        CONSTRAINT history_id_vaccine FOREIGN KEY (id_vaccine)
+            REFERENCES public.vaccine (id_vaccine) MATCH SIMPLE
+            ON UPDATE NO ACTION
+            ON DELETE NO ACTION
+            NOT VALID
 );

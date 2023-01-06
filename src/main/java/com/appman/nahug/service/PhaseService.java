@@ -15,12 +15,9 @@ import java.util.List;
 public class PhaseService {
     @Autowired
     PhaseRepository phaseRepository;
-    @Autowired
-    VaccineRepository vaccineRepository;
 
     public PhaseModel createPhase(PhaseDTO phaseDTO) {
         PhaseModel phaseModel = new PhaseModel();
-        phaseModel.setAgeMonth(phaseDTO.getAgeMonth());
         phaseModel.setNext(phaseDTO.getNext());
         phaseModel.setTime(phaseDTO.getTime());
         phaseModel.setVaccineId(phaseDTO.getVaccineId());

@@ -21,7 +21,7 @@ public class CatModel {
     private String gender;
 
     @ManyToOne
-    @JoinColumn(name = "id_u")
+    @JoinColumn(name = "id_user")
     private UserModel userModel;
 
     @ManyToOne

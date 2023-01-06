@@ -17,6 +17,7 @@ public class VaccineService {
     public VaccineModel addVaccine(VaccineDTO vaccineDTO) {
         VaccineModel vaccineModel = new VaccineModel();
         vaccineModel.setVaccine(vaccineDTO.getVaccine());
+        vaccineModel.setAgeMonth(vaccineDTO.getAgeMonth());
         return vaccineRepository.save(vaccineModel);
     }
 

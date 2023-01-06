@@ -8,7 +8,7 @@ INSERT INTO brand (description,brand,cal)
 INSERT INTO brand (description,brand,cal)
     VALUES ('good cat food','meo',360) ON CONFLICT (brand) do nothing;
 
-INSERT INTO vaccine (name_vaccine)
-    VALUES ('FPV') on CONFLICT (name_vaccine) do nothing;
-INSERT INTO vaccine (name_vaccine)
-    VALUES ('Rabbit') on CONFLICT (name_vaccine) do nothing;
+INSERT INTO vaccine (name_vaccine,age_month)
+    VALUES ('FPV',2) on CONFLICT (name_vaccine) do nothing;
+INSERT INTO vaccine (name_vaccine,age_month)
+    VALUES ('Rabbit',6) on CONFLICT (name_vaccine) do nothing;
