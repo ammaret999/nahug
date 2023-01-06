@@ -31,14 +31,16 @@ public class HistoryService {
         HistoryModel historyModel = new HistoryModel();
         CatModel catModelTarget = catRepository.findById(historyDTO.getIdCat()).orElse(null);
         VaccineModel vaccineModelTarget = vaccineRepository.findById(historyDTO.getIdVaccine()).orElse(null);
+        LocalDate todayDate = LocalDate.now();
+        LocalDate endDate = todayDate;
+
 
         if(catModelTarget.getAge_year() >= 1 || catModelTarget.getAge_month() >= vaccineModelTarget.getAgeMonth()) {
-            LocalDate todayDate = LocalDate.now();
-            LocalDate endDate = todayDate;
             historyModel.setVaccineModel(vaccineModelTarget);
             historyModel.setCatModel(catModelTarget);
             historyModel.setStartDate(todayDate);
             historyModel.setEndDate(endDate);
+//            historyModel.setCountVaccine(historyModel.getCountVaccine() + 1);
 
             return historyRepository.save(historyModel);
         }

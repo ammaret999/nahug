@@ -27,15 +27,20 @@ public class HistoryModel {
     private LocalDate endDate;
     @Column(name = "count")
     private Long countVaccine;
+    @Column(name = "phase_history")
+    private Long phaseHistory;
+
     public HistoryModel() {
     }
 
-    public HistoryModel(Long id, VaccineModel vaccineModel, CatModel catModel, LocalDate startDate, LocalDate endDate) {
+    public HistoryModel(Long id, VaccineModel vaccineModel, CatModel catModel, LocalDate startDate, LocalDate endDate, Long countVaccine, Long phaseHistory) {
         this.id = id;
         this.vaccineModel = vaccineModel;
         this.catModel = catModel;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.countVaccine = countVaccine;
+        this.phaseHistory = phaseHistory;
     }
 
     public Long getId() {
@@ -76,5 +81,21 @@ public class HistoryModel {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public Long getCountVaccine() {
+        return countVaccine;
+    }
+
+    public void setCountVaccine(Long countVaccine) {
+        this.countVaccine = countVaccine;
+    }
+
+    public Long getPhaseHistory() {
+        return phaseHistory;
+    }
+
+    public void setPhaseHistory(Long phaseHistory) {
+        this.phaseHistory = phaseHistory;
     }
 }
