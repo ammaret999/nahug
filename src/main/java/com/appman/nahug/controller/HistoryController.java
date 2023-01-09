@@ -15,10 +15,10 @@ public class HistoryController {
     @Autowired
     HistoryService historyService;
 
-    @RequestMapping(value = "/user/cat/history", method = RequestMethod.POST)
-    public HistoryModel createHistory(@RequestBody HistoryDTO historyDTO) {
-        return historyService.createHistory(historyDTO);
-    }
+//    @RequestMapping(value = "/user/cat/history", method = RequestMethod.POST)
+//    public HistoryModel createHistory(@RequestBody HistoryDTO historyDTO) {
+//        return historyService.createHistory(historyDTO);
+//    }
 
     @RequestMapping(value = "/user/cat/history", method = RequestMethod.GET)
     public List<HistoryModel> readHistory() {

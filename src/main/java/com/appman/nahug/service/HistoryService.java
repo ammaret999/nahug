@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
@@ -27,27 +26,37 @@ public class HistoryService {
     VaccineRepository vaccineRepository;
     @Autowired
     PhaseRepository phaseRepository;
-    public HistoryModel createHistory(HistoryDTO historyDTO){
-        HistoryModel historyModel = new HistoryModel();
-        CatModel catModelTarget = catRepository.findById(historyDTO.getIdCat()).orElse(null);
-        VaccineModel vaccineModelTarget = vaccineRepository.findById(historyDTO.getIdVaccine()).orElse(null);
-        LocalDate todayDate = LocalDate.now();
-        LocalDate endDate = todayDate;
-
-
-        if(catModelTarget.getAge_year() >= 1 || catModelTarget.getAge_month() >= vaccineModelTarget.getAgeMonth()) {
-            historyModel.setVaccineModel(vaccineModelTarget);
-            historyModel.setCatModel(catModelTarget);
-            historyModel.setStartDate(todayDate);
-            historyModel.setEndDate(endDate);
-//            historyModel.setCountVaccine(historyModel.getCountVaccine() + 1);
-
-            return historyRepository.save(historyModel);
-        }
-        else {
-            return historyModel;
-        }
-    }
+//    public HistoryModel createHistory(HistoryDTO historyDTO){
+//        HistoryModel historyModel = new HistoryModel();
+//        CatModel catModelTarget = catRepository.findById(historyDTO.getIdCat()).orElse(null);
+//        VaccineModel vaccineModelTarget = vaccineRepository.findById(historyDTO.getIdVaccine()).orElse(null);
+//        PhaseModel phaseModelTarget = phaseRepository.findAllByVaccineIdAndPhase(historyDTO.getIdVaccine(), 1L);
+//
+//        if(catModelTarget.getAge_year() >= 1 || catModelTarget.getAge_month() >= vaccineModelTarget.getAgeMonth()) {
+//            Long count = historyModel.getCountVaccine();
+//            if(count == null){count = 0L;}
+//            historyModel.setCountVaccine(count + 1);
+//
+//            if(phaseModelTarget.getTime() >= historyModel.getCountVaccine()){
+//                phaseRepository.findAllByVaccineIdAndPhase(historyDTO.getIdVaccine(),phaseModelTarget.getPhase());
+//            }
+//            historyModel.setVaccineModel(vaccineModelTarget);
+//            historyModel.setCatModel(catModelTarget);
+//
+//            LocalDate todayDate = LocalDate.now();
+//            LocalDate endDate = todayDate.plusMonths(phaseModelTarget.getNext());
+//            historyModel.setStartDate(todayDate);
+//            historyModel.setEndDate(endDate);
+//
+//            historyModel.setPhaseHistory(phaseModelTarget.getPhase());
+//
+//            return historyRepository.save(historyModel);
+//        }
+//        else {
+//            return historyModel;
+//        }
+//
+//    }
 
     public List<HistoryModel> getAllHistory() {
         return historyRepository.findAll();

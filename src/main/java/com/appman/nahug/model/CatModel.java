@@ -2,6 +2,8 @@ package com.appman.nahug.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cat")
 public class CatModel {
@@ -29,6 +31,10 @@ public class CatModel {
     private BrandModel brandModelId;
     @Column(name = "cal_day")
     private Long cal_day;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_cat",referencedColumnName = "id_cat")
+    private List<HistoryModel> historyModels;
 
     public CatModel(){}
 
