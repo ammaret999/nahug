@@ -1,7 +1,5 @@
 package com.appman.nahug.dto;
 
-import java.util.Date;
-
 public class HistoryDTO {
     private Long idCat;
     private Long idVaccine;

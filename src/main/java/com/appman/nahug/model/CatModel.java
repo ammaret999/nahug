@@ -10,13 +10,13 @@ public class CatModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cat")
-    private Long id_cat;
+    private Long id;
     @Column(name="name")
     private String name;
     @Column(name="age_year")
-    private Long age_year;
+    private Long ageYear;
     @Column(name="age_month")
-    private Long age_month;
+    private Long ageMonth;
     @Column(name="weight")
     private Long weight;
     @Column(name="gender")
@@ -25,37 +25,36 @@ public class CatModel {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private UserModel userModel;
-
     @ManyToOne
     @JoinColumn(name = "id_food")
     private BrandModel brandModelId;
     @Column(name = "cal_day")
     private Long cal_day;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cat",referencedColumnName = "id_cat")
-    private List<HistoryModel> historyModels;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_cat",referencedColumnName = "id_cat")
+//    private List<HistoryModel> historyModels;
 
     public CatModel(){}
 
-    public CatModel(Long id_cat, String name, Long age_year, Long age_month, Long weight, String gender, UserModel userModelId, BrandModel brandModelId, Long cat_day) {
-        this.id_cat = id_cat;
+    public CatModel(Long id, String name, Long ageYear, Long ageMonth, Long weight, String gender, UserModel userModel, BrandModel brandModelId, Long cal_day) {
+        this.id = id;
         this.name = name;
-        this.age_year = age_year;
-        this.age_month = age_month;
+        this.ageYear = ageYear;
+        this.ageMonth = ageMonth;
         this.weight = weight;
         this.gender = gender;
-        this.userModel = userModelId;
+        this.userModel = userModel;
         this.brandModelId = brandModelId;
-        this.cal_day = cat_day;
+        this.cal_day = cal_day;
     }
 
-    public Long getId_cat() {
-        return id_cat;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_cat(Long id_cat) {
-        this.id_cat = id_cat;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -66,20 +65,28 @@ public class CatModel {
         this.name = name;
     }
 
-    public Long getAge_year() {
-        return age_year;
+    public Long getAgeYear() {
+        return ageYear;
     }
 
-    public void setAge_year(Long age_year) {
-        this.age_year = age_year;
+    public void setAgeYear(Long ageYear) {
+        this.ageYear = ageYear;
     }
 
-    public Long getAge_month() {
-        return age_month;
+    public Long getAgeMonth() {
+        return ageMonth;
     }
 
-    public void setAge_month(Long age_month) {
-        this.age_month = age_month;
+    public void setAgeMonth(Long ageMonth) {
+        this.ageMonth = ageMonth;
+    }
+
+    public UserModel getUserModel() {
+        return userModel;
+    }
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
     }
 
     public Long getWeight() {

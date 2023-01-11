@@ -67,9 +67,6 @@ CREATE TABLE IF NOT EXISTS public.history
         id_vaccine integer NOT NULL,
         id_cat integer NOT NULL,
         start_date date NOT NULL,
-        end_date date NOT NULL,
-        count integer DEFAULT 0,
-        phase_history integer DEFAULT 1,
         CONSTRAINT history_pkey PRIMARY KEY (id),
         CONSTRAINT history_id_cat FOREIGN KEY (id_cat)
             REFERENCES public.cat (id_cat) MATCH SIMPLE
@@ -80,5 +77,4 @@ CREATE TABLE IF NOT EXISTS public.history
             REFERENCES public.vaccine (id_vaccine) MATCH SIMPLE
             ON UPDATE NO ACTION
             ON DELETE NO ACTION
-            NOT VALID
 );
