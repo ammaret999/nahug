@@ -8,8 +8,6 @@ public class PhaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_phase")
     private Long id;
-    @Column(name = "age_month")
-    private Long ageMonth;
     @Column(name = "next_time")
     private Long next;
     @Column(name = "count_vaccine")
@@ -22,11 +20,10 @@ public class PhaseModel {
     public PhaseModel() {
     }
 
-    public PhaseModel(Long id, Long vaccineId, Long phase, Long ageMonth, Long next, Long time) {
+    public PhaseModel(Long id, Long vaccineId, Long phase, Long next, Long time) {
         this.id = id;
         this.vaccineId = vaccineId;
         this.phase = phase;
-        this.ageMonth = ageMonth;
         this.next = next;
         this.time = time;
     }
@@ -53,14 +50,6 @@ public class PhaseModel {
 
     public void setPhase(Long phase) {
         this.phase = phase;
-    }
-
-    public Long getAgeMonth() {
-        return ageMonth;
-    }
-
-    public void setAgeMonth(Long ageMonth) {
-        this.ageMonth = ageMonth;
     }
 
     public Long getNext() {

@@ -28,4 +28,6 @@ public class VaccineController {
     public void deleteCat(@PathVariable(value = "id") Long id) {
         vaccineService.deleteVaccine(id);
     }
+
+
 }

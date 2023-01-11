@@ -1,26 +1,16 @@
 package com.appman.nahug.dto;
 
 public class PhaseDTO {
-    private Long ageMonth;
     private Long next;
     private Long time;
     private Long vaccineId;
     private Long phase;
 
-    public PhaseDTO(Long ageMonth, Long next, Long time, Long vaccineId, Long phase) {
-        this.ageMonth = ageMonth;
+    public PhaseDTO(Long next, Long time, Long vaccineId, Long phase) {
         this.next = next;
         this.time = time;
         this.vaccineId = vaccineId;
         this.phase = phase;
-    }
-
-    public Long getAgeMonth() {
-        return ageMonth;
-    }
-
-    public void setAgeMonth(Long ageMonth) {
-        this.ageMonth = ageMonth;
     }
 
     public Long getNext() {

@@ -27,8 +27,8 @@ public class CatService {
         CatModel catModel = new CatModel();
         catModel.setUserModelId(userRepository.findById(catDTO.getUserId()).orElseGet(null));
         catModel.setName(catDTO.getName());
-        catModel.setAge_year(catDTO.getAgeYear());
-        catModel.setAge_month(catDTO.getAgeMonth());
+        catModel.setAgeYear(catDTO.getAgeYear());
+        catModel.setAgeMonth(catDTO.getAgeMonth());
         catModel.setWeight(catDTO.getWeight());
         catModel.setGender(catDTO.getGender());
         catModel.setBrandModelId(brandRepository.findById(catDTO.getFoodId()).orElseGet(null));
@@ -43,8 +43,8 @@ public class CatService {
         CatModel Update = catRepository.findById(catId).get();
 
         Update.setName(catModel.getName());
-        Update.setAge_year(catModel.getAge_year());
-        Update.setAge_month(catModel.getAge_month());
+        Update.setAgeYear(catModel.getAgeYear());
+        Update.setAgeMonth(catModel.getAgeMonth());
         Update.setWeight(catModel.getWeight());
         Update.setGender(catModel.getGender());
         Update.setUserModelId(userRepository.findById(catModel.getUserModelId().getId_user()).orElseGet(null));
